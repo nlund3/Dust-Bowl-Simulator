@@ -6,7 +6,7 @@ struct Land
 private:
 	int seedCount = 0;
 	int daysUntilMaturity;
-	const int CAPACITY = 100;
+	int CAPACITY = 100;
 public:
 	Land(int days);
 	int GetSeedCount();

@@ -1,10 +1,10 @@
 #include "Shop.h"
 #include <iostream>
 
-#define NOT_ENOUGH std::cout << "You Don't Have Enough Monies To Buy This";
+#define NOT_ENOUGH std::cout << "You Don't Have Enough Monies To Buy This\n\n";
 
 #pragma region Constructor Definition
-Shop::Shop(int* shopCash, int* shopSeeds, int* shopFuel, int* shopHarvesters, bool discount)
+Shop::Shop(int* shopCash, int* shopSeeds, int* shopFuel, int* shopHarvesters, int* shopPlanters, bool discount)
 {
 	if (discount)
 	{
@@ -21,6 +21,7 @@ Shop::Shop(int* shopCash, int* shopSeeds, int* shopFuel, int* shopHarvesters, bo
 	seeds = shopSeeds;
 	fuel = shopFuel;
 	harvesters = shopHarvesters;
+	planters = shopPlanters;
 }
 #pragma endregion
 

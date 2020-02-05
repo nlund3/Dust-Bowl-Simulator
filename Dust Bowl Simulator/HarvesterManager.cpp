@@ -1,15 +1,9 @@
 #include "HarvesterManager.h"
 
-HarvesterManager::HarvesterManager(std::vector<Land>* land, int startingAmount, int rate, int fuelCapacity)
+HarvesterManager::HarvesterManager(std::vector<Land>* land, int startingAmount, int rate, int fuelCapacity) :
+	Vehicle(land, startingAmount, rate, fuelCapacity)
 {
-	this->land = land;
-	amountOfVehicles = startingAmount;
-	totalFuel = 0;
-	operatingDaysLeft = 0;
-	lastLandOperated = 0;
-	amountActive = 0;
-	operatingRate = rate;
-	maxFuelCapacity = fuelCapacity;
+
 }
 
 int HarvesterManager::Harvest()

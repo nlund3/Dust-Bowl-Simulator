@@ -2,16 +2,10 @@
 #include "Land.h"
 #include "Vehicle.h"
 
-PlanterManager::PlanterManager(std::vector<Land>* land, int startingVehicleCount, int rate, int fuelCapacity)
+PlanterManager::PlanterManager(std::vector<Land>* land, int startingVehicleCount, int rate, int fuelCapacity) :
+	Vehicle(land, startingVehicleCount, rate, fuelCapacity)
 {
-	this->land = land;
-	amountOfVehicles = startingVehicleCount;
-	totalFuel = 0;
-	operatingDaysLeft = 0;
-	lastLandOperated = 0;
-	amountActive = 0;
-	operatingRate = rate;
-	maxFuelCapacity = fuelCapacity;
+
 }
 
 int PlanterManager::Plant()

@@ -16,7 +16,6 @@ protected:
 	int operatingRate;
 
 public:
-	Vehicle();
 	Vehicle(std::vector<Land>* land, int startingAmount, int rate, int fuelCapacity);
 	int GetVehicles();
 	int GetFuel();

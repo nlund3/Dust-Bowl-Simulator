@@ -17,7 +17,7 @@ private:
 	int* planters;
 
 public:
-	Shop(int* shopCash, int* shopSeeds, int* shopFuel, int* shopHarvesters, bool discount);
+	Shop(int* shopCash, int* shopSeeds, int* shopFuel, int* shopHarvesters, int* shopPlanters, bool discount);
 
 	int GetSeedPrice();
 	int GetFuelPrice();

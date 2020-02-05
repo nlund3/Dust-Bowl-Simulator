@@ -41,7 +41,12 @@ int Input()
 	return input;
 }
 
-
+void OkScreen(std::string message)
+{
+	Log(message);
+	Log("Enter Any Number To Continue");
+	int input = Input();
+}
 
 int main()
 {
@@ -96,7 +101,7 @@ int main()
 	Log("YOU HAVE BEEN SCAMMED AND SHOULD");
 	Log("DEMAND YOUR MONEY BACK IMMEDIATELY\n");
 
-	Log("Enter Any Key To Continue");
+	Log("Enter Any Number To Continue");
 	Input();
 	do
 	{
@@ -114,25 +119,25 @@ int main()
 			{
 			case 1:
 				monies = 1000;
-				(*land).resize(10, Land(daysToMature));
+				land->resize(10, Land(daysToMature));
 				gameType = "Peasant";
 				break;
 			case 2:
 				monies = 5000;
-				(*land).resize(50, Land(daysToMature));
+				land->resize(50, Land(daysToMature));
 				harvesterDiscount = true;
 				gameType = "Industrial Farmer";
 				break;
 			case 3:
 				monies = 5000;
 				daysToMature = 50;
-				(*land).resize(5, Land(daysToMature));
+				land->resize(5, Land(daysToMature));
 
 				gameType = "Experimental Farmer";
 			case 4:
 				monies = 1000000;
 				daysToMature = 5;
-				(*land).resize(1000, Land(daysToMature));
+				land->resize(1000, Land(daysToMature));
 				harvesterDiscount = true;
 				smolDustBowlChance = 0.15;
 				dustBowlChance = 0.03;
@@ -154,7 +159,7 @@ int main()
 			Log("Small dust bowls wipe out half the crops per land");
 			Log("Large dust bowls wipe EVERYTHING\n");
 
-			Log("Press Any Key To Continue");
+			Log("Enter Any Number To Continue");
 			int input = Input();
 		}
 	} while (difficulty == 5);
@@ -166,7 +171,7 @@ int main()
 		
 		Log("Land:");
 		int i = 0;
-		while(i < (*land).size())
+		while(i < land->size())
 		{
 			std::string seeds = ToString((*land)[i].GetSeedCount());
 			std::string days = ToString((*land)[i].GetDaysUntilMaturity());
@@ -204,7 +209,7 @@ int main()
 				Log("Skip How Many Days?");
 				int days = Input();
 				
-				for (int l = 0; l < (*land).size(); l++)
+				for (int l = 0; l < land->size(); l++)
 				{
 					(*land)[l].TimeTravel(days);
 				}
@@ -218,8 +223,9 @@ int main()
 				int* seedsInBasket = new int;
 				int* fuelInBasket = new int;
 				int* harvestersInBasket = new int;
+				int* plantersInBasket = new int;
 
-				Shop farmerShop = Shop(shoppingCash, seedsInBasket, fuelInBasket, harvestersInBasket, harvesterDiscount);
+				Shop farmerShop = Shop(shoppingCash, seedsInBasket, fuelInBasket, harvestersInBasket, plantersInBasket, harvesterDiscount);
 
 				*seedsInBasket = 0;
 				*fuelInBasket = 0;
@@ -228,10 +234,12 @@ int main()
 				int seedPrice = farmerShop.GetSeedPrice();
 				int fuelPrice = farmerShop.GetFuelPrice();
 				int harvesterPrice = farmerShop.GetHarvesterPrice();
+				int planterPrice = farmerShop.GetPlanterPrice();
 
 				int seedsCost;
 				int fuelCost;
 				int harvesterCost;
+				int planterCost;
 				int totalCost;
 
 				bool inStore = true;
@@ -240,6 +248,7 @@ int main()
 					seedsCost = *seedsInBasket * seedPrice;
 					fuelCost = *fuelInBasket * fuelPrice;
 					harvesterCost = *harvestersInBasket * harvesterPrice;
+					planterCost = *plantersInBasket * planterPrice;
 					totalCost = seedsCost + fuelCost + harvesterCost;
 
 					Log("Farm Shop. Buy Something!");
@@ -284,12 +293,12 @@ int main()
 						if (totalCost <= *shoppingCash)
 						{
 							farmerShop.CheckOut();
-							Log("Pleasure Doing Business With You\n");
+							OkScreen("Pleasure Doing Business With You");
 							inStore = false;
 						}
 						else
 						{
-							Log("Not Enough Monies");
+							OkScreen("Not Enough Monies");
 						}
 						break;
 					}
@@ -298,70 +307,72 @@ int main()
 				monies = *shoppingCash;
 				seedSupply += *seedsInBasket;
 				fuelSupply += *fuelInBasket;
-				(*harvesters).AddVehicles(*harvestersInBasket);
+				harvesters->AddVehicles(*harvestersInBasket);
+				planters->AddVehicles(*plantersInBasket);
 
-				delete seedsInBasket, fuelInBasket, harvestersInBasket;
-					//eedsInBasket, fuelInBasket, harvestersInBasket;
+				delete seedsInBasket, fuelInBasket, harvestersInBasket, plantersInBasket;
 			}
 				break;
 			case 2:
 			{
-				if ((*land).size() > 0)
+				if (land->size() > 0)
 				{
 					Log("Which Land Do You Want To Plants Seeds In?");
+					Log("You have land 0 to " + ToString(land->size() - 1));
 
 					int index;
 					do
 					{
 						index = Input();
-					} while (index > (*land).size() - 1);
+					} while (index > land->size() - 1);
 
-					Log("How Many Seeds?");
+					Log("Enter amount of seeds you want to plant. Up to 100");
 					int seedsPlanted = Input();
 					while (seedsPlanted > (100 - (*land)[index].GetSeedCount()))
 					{
 						Log("Too Many Seeds");
+						Log("Enter amount of seeds you want to plant. Up to 100");
 						seedsPlanted = Input();
 					}
-					Log("Planted");
+					OkScreen("Planted");
 					(*land)[index].SetSeedCount((*land)[index].GetSeedCount() + seedsPlanted);
 					seedSupply -= seedsPlanted;
 				}
 				else
 				{
-					Log("You Have No Land");
+					OkScreen("You Have No Land");
 				}
 				break;
 			}
 			case 3:
 			{
-				Log("How Much Fuel");
+				Log("Enter amount of fuel you want to use to refuel");
 				int fuel = Input();
 				if (fuel > fuelSupply)
 				{
-					Log("Not Enough Fuel");
+					OkScreen("Not enough fuel in fuel supply");
 				}
 				else
 				{
-					int overFill = (*harvesters).AddFuel(fuel);
+					int overFill = harvesters->AddFuel(fuel);
 					fuelSupply -= fuel + overFill;
 					break;
 				}
 			}
 			case 4:
 			{
-				if ((*land).size() > 0)
+				if (land->size() > 0)
 				{
-					Log("Harvesting Land");
+					OkScreen("Harvesting Land");
 					cropSupply += h.Harvest();
 				}
 				else
 				{
-					Log("How Can You Harvest Land If You Don't Have Any?");
+					OkScreen("How Can You Harvest Land If You Don't Have Any?");
 				}
 			}
 		}
 	}
 
-	std::cout << "Oops you ran out of money. Better luck next time!" << std::endl;
+	Log("Oops you ran out of money. Better luck next time!");
 }
