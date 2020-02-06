@@ -65,9 +65,9 @@ int main()
 	int monies = 0;
 	int seedSupply = 0;
 	int fuelSupply = 0;
+
 	PlanterManager p = PlanterManager(land, 0, 1, 2);
 	HarvesterManager h = HarvesterManager(land, 0, 1, 2);
-
 	Vehicle* planters = &p;
 	Vehicle* harvesters = &h;
 	
@@ -148,7 +148,7 @@ int main()
 		{
 			Log("Here is a table of what each mode will give you");
 			Log("               _____________________________________________________________________________________________________________");
-			Log("              | Monies|Land|Harvesting Discount|Days To Mature (Per 100)|Chance Of Small Dust Bowl|Chance of Large Dust Bowl|");
+			Log("              | Monies|Land|Vehicle Discount|Days To Mature (Per 100)|Chance Of Small Dust Bowl|Chance of Large Dust Bowl|");
 			Log("Peasant:      |   1000|  10|                 No|                     200|                       5%|                       1%|");
 			Log("Industrial:   |   5000|  50|                Yes|                     200|                       5%|                       1%|");
 			Log("Experimental: |   5000|   5|                 No|                      50|                       5%|                       1%|");
@@ -170,7 +170,7 @@ int main()
 		
 		
 		Log("Land:");
-		int i = 0;
+		unsigned int i = 0;
 		while(i < land->size())
 		{
 			std::string seeds = ToString((*land)[i].GetSeedCount());
@@ -209,7 +209,7 @@ int main()
 				Log("Skip How Many Days?");
 				int days = Input();
 				
-				for (int l = 0; l < land->size(); l++)
+				for (unsigned int l = 0; l < land->size(); l++)
 				{
 					(*land)[l].TimeTravel(days);
 				}
@@ -230,6 +230,7 @@ int main()
 				*seedsInBasket = 0;
 				*fuelInBasket = 0;
 				*harvestersInBasket = 0;
+				*plantersInBasket = 0;
 
 				int seedPrice = farmerShop.GetSeedPrice();
 				int fuelPrice = farmerShop.GetFuelPrice();
@@ -254,11 +255,13 @@ int main()
 					Log("Farm Shop. Buy Something!");
 					Log("$" + ToString(seedPrice) + " Seeds (Enter 1)");
 					Log("$" + ToString(fuelPrice) + " Harvester Fuel (Enter 2)");
-					Log("$" + ToString(harvesterPrice) + " Harvesters (Enter 3)");
-					Log("Leave Store (Enter 4) \n");
+					Log("$" + ToString(planterPrice) + " Planters (Enter 3)");
+					Log("$" + ToString(harvesterPrice) + " Harvesters (Enter 4)");
+					Log("Leave Store (Enter 5) \n");
 
 					Log("Seeds: " + ToString(*seedsInBasket) + " | $" + ToString(seedsCost));
 					Log("Fuel: " + ToString(*fuelInBasket) + " | $" + ToString(fuelCost)); 
+					Log("Planters: " + ToString(*plantersInBasket) + "| $" + ToString(planterCost));
 					Log("Harvesters: " + ToString(*harvestersInBasket) + " | $" + ToString(harvesterCost));
 					Log("Total: $" + ToString(totalCost));
 					
@@ -284,12 +287,18 @@ int main()
 						break;
 					case 3:
 						Log("How Many?");
+						Log("Monies: " + ToString(*shoppingCash));
+						amount = Input();
+
+						farmerShop.BuyPlanters(amount);
+					case 4:
+						Log("How Many?");
 						Log("Monies: " + std::to_string(*shoppingCash));
 						amount = Input();
 
 						farmerShop.BuyHarvesters(amount);
 						break;
-					case 4:
+					case 5:
 						if (totalCost <= *shoppingCash)
 						{
 							farmerShop.CheckOut();
@@ -317,30 +326,12 @@ int main()
 			{
 				if (land->size() > 0)
 				{
-					Log("Which Land Do You Want To Plants Seeds In?");
-					Log("You have land 0 to " + ToString(land->size() - 1));
-
-					int index;
-					do
-					{
-						index = Input();
-					} while (index > land->size() - 1);
-
-					Log("Enter amount of seeds you want to plant. Up to 100");
-					int seedsPlanted = Input();
-					while (seedsPlanted > (100 - (*land)[index].GetSeedCount()))
-					{
-						Log("Too Many Seeds");
-						Log("Enter amount of seeds you want to plant. Up to 100");
-						seedsPlanted = Input();
-					}
-					OkScreen("Planted");
-					(*land)[index].SetSeedCount((*land)[index].GetSeedCount() + seedsPlanted);
-					seedSupply -= seedsPlanted;
+					OkScreen("Harvesting Land");
+					seedSupply -= p.Plant();
 				}
 				else
 				{
-					OkScreen("You Have No Land");
+					OkScreen("How Can You Plant Seeds On Land If You Don't Have Any?");
 				}
 				break;
 			}
