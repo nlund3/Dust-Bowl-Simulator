@@ -4,7 +4,7 @@
 #define NOT_ENOUGH std::cout << "You Don't Have Enough Monies To Buy This\n\n";
 
 #pragma region Constructor Definition
-Shop::Shop(int* shopCash, int* shopSeeds, int* shopFuel, int* shopHarvesters, int* shopPlanters, bool discount)
+Shop::Shop(int* shopCash, int* shopSeeds, int* shopFuel, int* shopHarvesters, int* shopPlanters, std::vector<Land>* shopLand, bool discount)
 {
 	if (discount)
 	{
@@ -22,6 +22,7 @@ Shop::Shop(int* shopCash, int* shopSeeds, int* shopFuel, int* shopHarvesters, in
 	fuel = shopFuel;
 	harvesters = shopHarvesters;
 	planters = shopPlanters;
+	land = shopLand;
 }
 #pragma endregion
 
@@ -45,6 +46,11 @@ int Shop::GetHarvesterPrice()
 int Shop::GetPlanterPrice()
 {
 	return planterPrice;
+}
+
+int Shop::GetLandPrice()
+{
+	return LAND_PRICE;
 }
 #pragma endregion
 
@@ -90,6 +96,18 @@ void Shop::BuyPlanters(int amount)
 	if (*cash >= (amount * planterPrice))
 	{
 		*planters = amount;
+	}
+	else
+	{
+		NOT_ENOUGH
+	}
+}
+
+void Shop::BuyLand(int amount, int daysUntilMaturity)
+{
+	if (*cash >= (amount * LAND_PRICE))
+	{
+		land->resize(amount, Land(daysUntilMaturity));
 	}
 	else
 	{

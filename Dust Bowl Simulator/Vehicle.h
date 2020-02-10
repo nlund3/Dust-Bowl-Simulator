@@ -23,6 +23,8 @@ public:
 	int GetLastLandOperated();
 	int GetVehiclesActive();
 
+	void SetActive(int amount);
+
 	int AddFuel(int addFuel); //returns spill over
 	int AddFuelMax(); //returns how much fuel it took to fill it up
 	void AddVehicles(int num);

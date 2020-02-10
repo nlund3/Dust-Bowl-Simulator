@@ -38,6 +38,11 @@ int Vehicle::GetVehiclesActive()
 	return amountActive;
 }
 
+void Vehicle::SetActive(int amount)
+{
+	amountActive = amount;
+}
+
 int Vehicle::AddFuel(int addFuel)
 {
 	if ((totalFuel + addFuel) >= (maxFuelCapacity * amountOfVehicles))

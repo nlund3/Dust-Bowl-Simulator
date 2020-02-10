@@ -4,15 +4,15 @@
 struct Land
 {
 private:
-	int seedCount = 0;
+	short seedCount = 0;
 	int daysUntilMaturity;
-	int CAPACITY = 100;
+	short CAPACITY = 100;
 public:
 	Land(int days);
-	int GetSeedCount();
-	int GetSeedCapacity();
+	short GetSeedCount();
+	short GetSeedCapacity();
 	int GetDaysUntilMaturity();
-	void SetSeedCount(int seeds);
+	void SetSeedCount(short seeds);
 	void TimeTravel(int days);
 };
 

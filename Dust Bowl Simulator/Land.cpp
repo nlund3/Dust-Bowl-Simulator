@@ -5,12 +5,12 @@ Land::Land(int days)
 	daysUntilMaturity = days;
 }
 
-int Land::GetSeedCount()
+short Land::GetSeedCount()
 {
 	return seedCount;
 }
 
-int Land::GetSeedCapacity()
+short Land::GetSeedCapacity()
 {
 	return CAPACITY;
 }
@@ -20,7 +20,7 @@ int Land::GetDaysUntilMaturity()
 	return daysUntilMaturity;
 }
 
-void Land::SetSeedCount(int seeds)
+void Land::SetSeedCount(short seeds)
 {
 	seedCount = seeds;
 }
