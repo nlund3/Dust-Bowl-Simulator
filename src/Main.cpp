@@ -298,25 +298,35 @@ int main()
         //---------------------------------------------------------
         if(planting)
         {
-            if(seeds_planted + planting_speed > seed_capacity)
+            if(fuel - 20 * planters >= 0)
             {
-                seeds_planted = seed_capacity;
+                fuel -= planters * 20;
+
+                if(seeds_planted + planting_speed > seed_capacity)
+                {
+                    seeds_planted = seed_capacity;
+                }
+                else
+                {
+                    seeds_planted += planting_speed;
+                }
             }
-            else
-            {
-                seeds_planted += planting_speed;
-            }    
         }
         
         if(harvesting)
         {
-            if(seeds_harvested + harvesting_speed > seeds_matured)
+            if(fuel - 20 * harvesters >= 0)
             {
-                seeds_harvested = seeds_matured;
-            }
-            else
-            {
-                seeds_harvested += harvesting_speed;
+                fuel -= harvesters * 20;
+
+                if(seeds_harvested + harvesting_speed > seeds_matured)
+                {
+                    seeds_harvested = seeds_matured;
+                }
+                else
+                {
+                    seeds_harvested += harvesting_speed;
+                }
             }
         }
         //---------------------------------------------------------
