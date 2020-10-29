@@ -97,7 +97,7 @@ int main()
 
         PrintColor("Actions:\n=====================================\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
 
-        PrintColor("Next, Store, Plant, Harvest\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
+        PrintColor("Next, Store, " + (planting) ? "Stop Planting " : "Plant " + (harvesting) ? "Stop Harvesting\n" + "Harvest\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
         //-------------------------------------------------------------------------------------------------------------------
 
         //Input
