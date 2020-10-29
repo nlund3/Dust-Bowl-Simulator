@@ -1,0 +1,22 @@
+[
+{
+  "directory": "D:/Development/C++/Dust Bowl Simulator/build/src",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe    -g   -o CMakeFiles\\DustBowSimulator.dir\\Main.cpp.obj -c \"D:\\Development\\C++\\Dust Bowl Simulator\\src\\Main.cpp\"",
+  "file": "D:/Development/C++/Dust Bowl Simulator/src/Main.cpp"
+},
+{
+  "directory": "D:/Development/C++/Dust Bowl Simulator/build/src",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe    -g   -o CMakeFiles\\DustBowSimulator.dir\\ProgressBar.cpp.obj -c \"D:\\Development\\C++\\Dust Bowl Simulator\\src\\ProgressBar.cpp\"",
+  "file": "D:/Development/C++/Dust Bowl Simulator/src/ProgressBar.cpp"
+},
+{
+  "directory": "D:/Development/C++/Dust Bowl Simulator/build/src",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe    -g   -o CMakeFiles\\DustBowSimulator.dir\\Weather.cpp.obj -c \"D:\\Development\\C++\\Dust Bowl Simulator\\src\\Weather.cpp\"",
+  "file": "D:/Development/C++/Dust Bowl Simulator/src/Weather.cpp"
+},
+{
+  "directory": "D:/Development/C++/Dust Bowl Simulator/build/src",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe    -g   -o CMakeFiles\\DustBowSimulator.dir\\Console.cpp.obj -c \"D:\\Development\\C++\\Dust Bowl Simulator\\src\\Console.cpp\"",
+  "file": "D:/Development/C++/Dust Bowl Simulator/src/Console.cpp"
+}
+]

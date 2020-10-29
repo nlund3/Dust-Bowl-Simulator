@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Development/C++/Dust Bowl Simulator/src/Console.h
+iostream
+-
+string
+-
+
+D:/Development/C++/Dust Bowl Simulator/src/Main.cpp
+iostream
+-
+time.h
+-
+ProgressBar.h
+D:/Development/C++/Dust Bowl Simulator/src/ProgressBar.h
+Console.h
+D:/Development/C++/Dust Bowl Simulator/src/Console.h
+Weather.h
+D:/Development/C++/Dust Bowl Simulator/src/Weather.h
+windows.h
+-
+
+D:/Development/C++/Dust Bowl Simulator/src/ProgressBar.h
+Console.h
+D:/Development/C++/Dust Bowl Simulator/src/Console.h
+string
+-
+iostream
+-
+math.h
+-
+
+D:/Development/C++/Dust Bowl Simulator/src/Weather.h
+iostream
+-
+string
+-
+
