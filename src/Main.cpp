@@ -78,13 +78,13 @@ int main()
         WeatherPrint(weather);
         PrintColor("\n\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
 
-        PrintColor("Operations:\n==================================\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
+        PrintColor("Progress:\n==================================\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
         ProgressBar growing_progress = ProgressBar(seeds_matured, seeds_planted);
-        PrintColor("Growing... " + growing_progress.GetBar(), ForegroundColors::YELLOW, BackgroundColors::BLACK);
+        PrintColor("Plant Growth " + growing_progress.GetBar(), ForegroundColors::YELLOW, BackgroundColors::BLACK);
         ProgressBar planting_progress = ProgressBar(seeds_planted, seed_capacity);
-        PrintColor("Planting... " + planting_progress.GetBar(), ForegroundColors::YELLOW, BackgroundColors::BLACK);
+        PrintColor("Planting (" + (planting) ? "Active" : "Inactive" + ") " + planting_progress.GetBar(), ForegroundColors::YELLOW, BackgroundColors::BLACK);
         ProgressBar harvesting_progress = ProgressBar(seeds_harvested, seeds_matured);
-        PrintColor("Harvesting... " + planting_progress.GetBar(), ForegroundColors::YELLOW, BackgroundColors::BLACK);
+        PrintColor("Harvesting (" + (harvesting) ? "Active" : "Inactive" + ") " + harvesting_progress.GetBar(), ForegroundColors::YELLOW, BackgroundColors::BLACK);
 
         PrintColor("\nSupply:\n======================================\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
         PrintColor("Seeds: " + std::to_string(seeds), ForegroundColors::WHITE, BackgroundColors::BLACK);
