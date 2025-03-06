@@ -33,6 +33,20 @@ void clear()
 };
 #endif*/
 
+std::string ActiveInactive(bool planting)
+{
+    return planting ? "Active" : "Inactive";
+};
+
+std::string PlantStopPlanting(bool planting)
+{
+    return planting ? "Stop Planting" : "Plant"; 
+};
+
+std::string HarvestStopHarvesting(bool planting)
+{
+    return planting ? "Stop Harvesting" : "Harvest"; 
+};
 
 int main()
 {
@@ -78,13 +92,13 @@ int main()
         WeatherPrint(weather);
         PrintColor("\n\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
 
-        PrintColor("Progress:\n==================================\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
+        /*PrintColor("Progress:\n==================================\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
         ProgressBar growing_progress = ProgressBar(seeds_matured, seeds_planted);
         PrintColor("Plant Growth " + growing_progress.GetBar(), ForegroundColors::YELLOW, BackgroundColors::BLACK);
         ProgressBar planting_progress = ProgressBar(seeds_planted, seed_capacity);
-        PrintColor("Planting (" + (planting) ? "Active" : "Inactive" + ") " + planting_progress.GetBar(), ForegroundColors::YELLOW, BackgroundColors::BLACK);
+        PrintColor("Planting (" + ActiveInactive(planting) + ") " + planting_progress.GetBar(), ForegroundColors::YELLOW, BackgroundColors::BLACK);
         ProgressBar harvesting_progress = ProgressBar(seeds_harvested, seeds_matured);
-        PrintColor("Harvesting (" + (harvesting) ? "Active" : "Inactive" + ") " + harvesting_progress.GetBar(), ForegroundColors::YELLOW, BackgroundColors::BLACK);
+        PrintColor("Harvesting (" + ActiveInactive(harvesting) + ") " + harvesting_progress.GetBar(), ForegroundColors::YELLOW, BackgroundColors::BLACK);*/
 
         PrintColor("\nSupply:\n======================================\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
         PrintColor("Seeds: " + std::to_string(seeds), ForegroundColors::WHITE, BackgroundColors::BLACK);
@@ -97,7 +111,7 @@ int main()
 
         PrintColor("Actions:\n=====================================\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
 
-        PrintColor("Next, Store, " + (planting) ? "Stop Planting " : "Plant " + (harvesting) ? "Stop Harvesting\n" + "Harvest\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
+        PrintColor("Next, Store, " + PlantStopPlanting(planting) + " " + HarvestStopHarvesting(harvesting) + "\n", ForegroundColors::WHITE, BackgroundColors::BLACK);
         //-------------------------------------------------------------------------------------------------------------------
 
         //Input
@@ -283,11 +297,11 @@ int main()
         }
         else if(input == "plant")
         {
-            !planting;
+            //!planting;
         }
         else if(input == "harvest")
         {
-            !harvesting;
+            //!harvesting;
         }
         else
         {
@@ -354,7 +368,10 @@ int main()
                 seeds_planted -= 0.5 * seeds_planted;
                 break;
             case WeatherTypes::CATASTROPHIC:
-                seeds_planted -= seeds_planted;
+                seeds_planted -= 0;
+                break;
+            case WeatherTypes::CLEAR:
+                // Do nothing
                 break;
         }
 

@@ -1,22 +1,26 @@
 [
 {
-  "directory": "D:/Development/C++/Dust Bowl Simulator/build/src",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe    -g   -o CMakeFiles\\DustBowSimulator.dir\\Main.cpp.obj -c \"D:\\Development\\C++\\Dust Bowl Simulator\\src\\Main.cpp\"",
-  "file": "D:/Development/C++/Dust Bowl Simulator/src/Main.cpp"
+  "directory": "/home/coolguypro1001/Development/C/Dust-Bowl-Simulator/build",
+  "command": "/usr/lib64/ccache/clang++ -g -o src/CMakeFiles/DustBowSimulator.dir/Weather.cpp.o -c /home/coolguypro1001/Development/C/Dust-Bowl-Simulator/src/Weather.cpp",
+  "file": "/home/coolguypro1001/Development/C/Dust-Bowl-Simulator/src/Weather.cpp",
+  "output": "src/CMakeFiles/DustBowSimulator.dir/Weather.cpp.o"
 },
 {
-  "directory": "D:/Development/C++/Dust Bowl Simulator/build/src",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe    -g   -o CMakeFiles\\DustBowSimulator.dir\\ProgressBar.cpp.obj -c \"D:\\Development\\C++\\Dust Bowl Simulator\\src\\ProgressBar.cpp\"",
-  "file": "D:/Development/C++/Dust Bowl Simulator/src/ProgressBar.cpp"
+  "directory": "/home/coolguypro1001/Development/C/Dust-Bowl-Simulator/build",
+  "command": "/usr/lib64/ccache/clang++ -g -o src/CMakeFiles/DustBowSimulator.dir/Console.cpp.o -c /home/coolguypro1001/Development/C/Dust-Bowl-Simulator/src/Console.cpp",
+  "file": "/home/coolguypro1001/Development/C/Dust-Bowl-Simulator/src/Console.cpp",
+  "output": "src/CMakeFiles/DustBowSimulator.dir/Console.cpp.o"
 },
 {
-  "directory": "D:/Development/C++/Dust Bowl Simulator/build/src",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe    -g   -o CMakeFiles\\DustBowSimulator.dir\\Weather.cpp.obj -c \"D:\\Development\\C++\\Dust Bowl Simulator\\src\\Weather.cpp\"",
-  "file": "D:/Development/C++/Dust Bowl Simulator/src/Weather.cpp"
+  "directory": "/home/coolguypro1001/Development/C/Dust-Bowl-Simulator/build",
+  "command": "/usr/lib64/ccache/clang++ -g -o src/CMakeFiles/DustBowSimulator.dir/Store.cpp.o -c /home/coolguypro1001/Development/C/Dust-Bowl-Simulator/src/Store.cpp",
+  "file": "/home/coolguypro1001/Development/C/Dust-Bowl-Simulator/src/Store.cpp",
+  "output": "src/CMakeFiles/DustBowSimulator.dir/Store.cpp.o"
 },
 {
-  "directory": "D:/Development/C++/Dust Bowl Simulator/build/src",
-  "command": "C:\\msys64\\mingw64\\bin\\g++.exe    -g   -o CMakeFiles\\DustBowSimulator.dir\\Console.cpp.obj -c \"D:\\Development\\C++\\Dust Bowl Simulator\\src\\Console.cpp\"",
-  "file": "D:/Development/C++/Dust Bowl Simulator/src/Console.cpp"
+  "directory": "/home/coolguypro1001/Development/C/Dust-Bowl-Simulator/build",
+  "command": "/usr/lib64/ccache/clang++ -I/home/coolguypro1001/Development/C/Dust-Bowl-Simulator/src -g -o tests/CMakeFiles/tests.dir/StoreTests.cpp.o -c /home/coolguypro1001/Development/C/Dust-Bowl-Simulator/tests/StoreTests.cpp",
+  "file": "/home/coolguypro1001/Development/C/Dust-Bowl-Simulator/tests/StoreTests.cpp",
+  "output": "tests/CMakeFiles/tests.dir/StoreTests.cpp.o"
 }
 ]
