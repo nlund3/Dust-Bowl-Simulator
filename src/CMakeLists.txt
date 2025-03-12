@@ -1,13 +1,11 @@
-add_library(
-    ${PROJECT_NAME}
+target_sources(
+    dust-bowl-game
+    PUBLIC
+
     #Main.cpp
     #ProgressBar.cpp
-    Weather.cpp
-    Console.cpp
+    #Console.cpp
+    FarmLand.cpp
     Store.cpp
-
-    #ProgressBar.h
-    Console.h
-    Store.h
-    Weather.h
+    #Weather.cpp
 )
